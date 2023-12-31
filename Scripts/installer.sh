@@ -425,17 +425,19 @@ EOM
 }
 
 
-system_menu(){
-    memfree=`cat /proc/meminfo | grep MemFree | awk {'print $2'}`
-    memtotal=`cat /proc/meminfo | grep MemTotal | awk {'print $2'}`
-    pourcent=$((($memfree * 100)/$memtotal))
-    diskused=`df -h | grep /dev/mmcblk0p10 | awk {'print $3 " / " $2 " (" $4 " available)" '}`
-    process=`ps ax | wc -l | tr -d " "`
-    uptime=`cat /proc/uptime | cut -f1 -d.`
-    upDays=$((uptime/60/60/24))
-    upHours=$((uptime/60/60%24))
-    upMins=$((uptime/60%60))
-    load=`cat /proc/loadavg | awk {'print $1 " (1 min.) / " $2 " (5 min.) / " $3 " (15 min.)"'}`
+system_menu() {
+    mem_info=$(awk '/MemFree|MemTotal/ {print $2}' /proc/meminfo)
+    mem_free=$((mem_info[1] / 1024))
+    mem_total=$((mem_info[0] / 1024))
+    mem_percent=$((mem_free * 100 / mem_total))
+
+    disk_info=$(df -h | awk '/\/dev\/mmcblk0p10/ {print $3 " / " $2 " (" $4 " available)"}')
+
+    process_count=$(ps ax | wc -l | tr -d " ")
+    
+    uptime_info=$(uptime -p)
+    load_info=$(cat /proc/loadavg | awk '{print $1 " (1 min.) / " $2 " (5 min.) / " $3 " (15 min.)"}')
+
     printf " ============================================================== \n"
     printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
     printf " |         ${blue}Installation Helper for Creality K1 Series         ${white}| \n"
@@ -444,22 +446,22 @@ system_menu(){
     printf " [============================================================] \n"
     printf " |                      ${yellow}[ System Menu ]                       ${white}| \n"
     printf " [============================================================] \n"
-    printf "                                                                \n"
+    printf "\n"
     printf "        ${green}System: ${white}\e[97m$(uname -s) (Kernel $(uname -r)) \n"
     printf "      ${green}Hostname: ${white}\e[97m$(uname -n) \n"
     printf "    ${green}IP Address: ${white}\e[97m$(check_connection) \n"
-    printf "     ${green}RAM Usage: ${white}\e[97m$(($memfree/1024)) MB / $(($memtotal/1024)) MB ($pourcent%% available) \n"
-    printf "    ${green}Disk Usage: ${white}\e[97m$diskused \n"
-    printf "        ${green}Uptime: ${white}\e[97m$upDays days $upHours hours $upMins minutes \n"
-    printf "     ${green}Processes: ${white}\e[97m$process running process \n"
-    printf "   ${green}System Load: ${white}\e[97m$load \n"
-    printf "                                                                \n"
+    printf "     ${green}RAM Usage: ${white}\e[97m$mem_free MB / $mem_total MB ($mem_percent%% available) \n"
+    printf "    ${green}Disk Usage: ${white}\e[97m$disk_info \n"
+    printf "        ${green}Uptime: ${white}\e[97m$uptime_info \n"
+    printf "     ${green}Processes: ${white}\e[97m$process_count running process \n"
+    printf "   ${green}System Load: ${white}\e[97m$load_info \n"
+    printf "\n"
     printf " ============================================================== \n"
     printf " |                                                            | \n"
     printf " |  ${yellow}b) ${white}Back to ${yellow}[Main Menu]                                    ${white}| \n"
-    printf " |  ${red}q) ${white}Exit                                                   | \n"
-    printf " |                                                            | \n"
-    printf " |                                                     ${cyan}$VERSION ${white}| \n"
+    printf " |  ${red}q) ${white}Exit                                                   |\n"
+    printf " |                                                            |\n"
+    printf " |                                                     ${cyan}$VERSION ${white}|\n"
     printf " ============================================================== \n"
     printf "\n"
     printf " ${white}Please enter your choice and validate with Enter: ${yellow}"
@@ -467,6 +469,7 @@ system_menu(){
     opt_system_menu=$(echo "$opt_system_menu" | tr '[:lower:]' '[:upper:]')
     printf "${white}\n"
 }
+
 
 while [ 1 ]
 do
