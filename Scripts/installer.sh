@@ -255,55 +255,57 @@ EOM
     printf "${white}\n"
 }
 
+uninstall_menu() {
+    cat <<EOM
+=============================================================
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+|         ${blue}Installation Helper for Creality K1 Series         ${white}|
+|            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}|
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+[============================================================]
+|                     ${yellow}[ Remove Menu ]                        ${white}|
+[============================================================]
+|                                                            |
+| ${blue}Essentials:                                                ${white}|
+|   ${yellow}1) ${white}Remove ${green}Moonraker ${white}and ${green}Nginx                            ${white}|
+|   ${yellow}2) ${white}Remove ${green}Fluidd ${white}(port 4408)                             |
+|   ${yellow}3) ${white}Remove ${green}Mainsail ${white}(port 4409)                           |
+|                                                            |
+| ${blue}Utilities:                                                 ${white}|
+|   ${yellow}4) ${white}Remove ${green}Entware                                        ${white}|
+|   ${yellow}5) ${white}Remove ${green}Klipper Gcode Shell Command ${white}file               |
+|   ${yellow}6) ${white}Remove ${green}Hostname Service ${white}file                          |
+|   ${yellow}7) ${white}Remove ${green}Fix for Reboot/Shutdown functions ${white}             |
+|                                                            |
+| ${blue}Improvements:                                              ${white}|
+|   ${yellow}8) ${white}Remove ${green}Klipper Adaptive Meshing & Purging             ${white}|
+|   ${yellow}9) ${white}Remove ${green}Buzzer Support ${white}files                           |
+|  ${yellow}10) ${white}Remove ${green}Nozzle Cleaning Fan Control ${white}files              |
+|                                                            |
+| ${blue}Camera:                                                    ${white}|
+|  ${yellow}11) ${white}Remove ${green}Moonraker Timelapse                            ${white}|
+|  ${yellow}12) ${white}Remove ${green}Camera Settings Control ${white}files                  |
+|                                                            |
+| ${blue}Remote Access and AI Detection:                            ${white}|
+|  ${yellow}13) ${white}Remove ${green}OctoEverywhere                                 ${white}|
+|  ${yellow}14) ${white}Remove ${green}Obico                                          ${white}|
+|  ${yellow}15) ${white}Remove ${green}Mobileraker Companion                          ${white}|
+|                                                            |
+=============================================================
+|                                                            |
+|  ${yellow}b) ${white}Back to ${yellow}[Main Menu]                                    ${white}|
+|  ${red}q) ${white}Exit                                                   |
+|                                                            |
+|                                                     ${cyan}$VERSION ${white}|
+=============================================================
+Please enter your choice and validate with Enter: ${yellow}
+EOM
 
-uninstall_menu(){
-    printf " ============================================================== \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " |         ${blue}Installation Helper for Creality K1 Series         ${white}| \n"
-    printf " |            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}| \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " [============================================================] \n"
-    printf " |                     ${yellow}[ Remove Menu ]                        ${white}| \n"
-    printf " [============================================================] \n"
-    printf " |                                                            | \n"
-    printf " | ${blue}Essentials:                                                ${white}| \n"
-    printf " |   ${yellow}1) ${white}Remove ${green}Moonraker ${white}and ${green}Nginx                            ${white}| \n"
-    printf " |   ${yellow}2) ${white}Remove ${green}Fluidd ${white}(port 4408)                             | \n"
-    printf " |   ${yellow}3) ${white}Remove ${green}Mainsail ${white}(port 4409)                           | \n"
-    printf " |                                                            | \n"
-    printf " | ${blue}Utilities:                                                 ${white}| \n"
-    printf " |   ${yellow}4) ${white}Remove ${green}Entware                                        ${white}| \n"
-    printf " |   ${yellow}5) ${white}Remove ${green}Klipper Gcode Shell Command ${white}file               | \n"
-    printf " |   ${yellow}6) ${white}Remove ${green}Hostname Service ${white}file                          | \n"
-    printf " |   ${yellow}7) ${white}Remove ${green}Fix for Reboot/Shutdown functions ${white}             | \n"
-    printf " |                                                            | \n"
-    printf " | ${blue}Improvements:                                              ${white}| \n"
-    printf " |   ${yellow}8) ${white}Remove ${green}Klipper Adaptive Meshing & Purging             ${white}| \n"
-    printf " |   ${yellow}9) ${white}Remove ${green}Buzzer Support ${white}files                           | \n"
-    printf " |  ${yellow}10) ${white}Remove ${green}Nozzle Cleaning Fan Control ${white}files              | \n"
-    printf " |                                                            | \n"
-    printf " | ${blue}Camera:                                                    ${white}| \n"
-    printf " |  ${yellow}11) ${white}Remove ${green}Moonraker Timelapse                            ${white}| \n"
-    printf " |  ${yellow}12) ${white}Remove ${green}Camera Settings Control ${white}files                  | \n"
-    printf " |                                                            | \n"
-    printf " | ${blue}Remote Access and AI Detection:                            ${white}| \n"
-    printf " |  ${yellow}13) ${white}Remove ${green}OctoEverywhere                                 ${white}| \n"
-    printf " |  ${yellow}14) ${white}Remove ${green}Obico                                          ${white}| \n"
-    printf " |  ${yellow}15) ${white}Remove ${green}Mobileraker Companion                          ${white}| \n"
-    printf " |                                                            | \n"
-    printf " ============================================================== \n"
-    printf " |                                                            | \n"
-    printf " |  ${yellow}b) ${white}Back to ${yellow}[Main Menu]                                    ${white}| \n"
-    printf " |  ${red}q) ${white}Exit                                                   | \n"
-    printf " |                                                            | \n"
-    printf " |                                                     ${cyan}$VERSION ${white}| \n"
-    printf " ============================================================== \n"
-    printf "\n"
-    printf " ${white}Please enter your choice and validate with Enter: ${yellow}"
     read -rp "" opt_uninstall_menu
     opt_uninstall_menu=$(echo "$opt_uninstall_menu" | tr '[:lower:]' '[:upper:]')
     printf "${white}\n"
 }
+
 
 backup_menu(){
     printf " ============================================================== \n"
