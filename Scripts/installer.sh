@@ -152,16 +152,18 @@ check_ipaddress() {
 }
 
 check_connection() {
-    eth0_ip=$(ip -4 addr show eth0 | grep -o -E '(inet\s)([0-9]+\.){3}[0-9]+' | cut -d ' ' -f 2 | head -n 1)
-    wlan0_ip=$(ip -4 addr show wlan0 | grep -o -E '(inet\s)([0-9]+\.){3}[0-9]+' | cut -d ' ' -f 2 | head -n 1)
+    eth0_ip=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | head -n 1)
+    wlan0_ip=$(ip -4 addr show wlan0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | head -n 1)
+    
     if [ -n "$eth0_ip" ]; then
-        printf "$eth0_ip (ETHERNET)"
+        printf "${green}$eth0_ip (ETHERNET)${white}\n"
     elif [ -n "$wlan0_ip" ]; then
-        printf "$wlan0_ip (WLAN)"
+        printf "${green}$wlan0_ip (WLAN)${white}\n"
     else
-        printf "xxx.xxx.xxx.xxx"
+        printf "${darkred}No Connection${white}\n"
     fi
 }
+
 
 clear
 
