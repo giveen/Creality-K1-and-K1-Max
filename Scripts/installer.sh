@@ -167,39 +167,42 @@ check_connection() {
 
 clear
 
-main_menu(){
-    printf " ============================================================== \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " |         ${blue}Installation Helper for Creality K1 Series         ${white}| \n"
-    printf " |            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}| \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " [============================================================] \n"
-    printf " |                        ${yellow}[ Main Menu ]                       ${white}| \n"
-    printf " [============================================================] \n"
-    printf " |                                                            | \n"
-    printf " | ${darkred}/!\ ONLY USE THIS SCRIPT WITH FIRMWARE 1.3.2.1 AND ABOVE!  ${white}| \n"
-    printf " |                                                            | \n"
-    printf " |  ${yellow}1) ${white}Open ${green}[Install] ${white}Menu                                    | \n"
-    printf " |  ${yellow}2) ${white}Open ${green}[Remove] ${white}Menu                                     | \n"
-    printf " |  ${yellow}3) ${white}Open ${green}[Backup & Restore] ${white}Menu                           | \n"
-    printf " |  ${yellow}4) ${white}Open ${green}[Customize] ${white}Menu                                  | \n"
-    printf " |  ${yellow}5) ${white}Open ${green}[Informations] ${white}Menu                               | \n"
-    printf " |  ${yellow}6) ${white}Open ${green}[System] ${white}Menu                                     | \n"
-    printf " |                                                            | \n"
-    printf " ============================================================== \n"
-    printf " |                                                            | \n"
-    printf " |  ${yellow}r) ${white}Reload Moonraker and Nginx                             | \n"
-    printf " |  ${yellow}u) ${white}Check Script Updates                                   | \n"
-    printf " |  ${red}q) ${white}Exit                                                   | \n"
-    printf " |                                                            | \n"
-    printf " |                                                     ${cyan}$VERSION ${white}| \n"
-    printf " ============================================================== \n"
-    printf "\n"
-    printf " ${white}Please enter your choice and validate with Enter: ${yellow}"
+main_menu() {
+    cat <<EOM
+=============================================================
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+|         ${blue}Installation Helper for Creality K1 Series         ${white}|
+|            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}|
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+[============================================================]
+|                        ${yellow}[ Main Menu ]                       ${white}|
+[============================================================]
+|                                                            |
+| ${darkred}/!\ ONLY USE THIS SCRIPT WITH FIRMWARE 1.3.2.1 AND ABOVE!  ${white}|
+|                                                            |
+|  ${yellow}1) ${white}Open ${green}[Install] ${white}Menu                                    |
+|  ${yellow}2) ${white}Open ${green}[Remove] ${white}Menu                                     |
+|  ${yellow}3) ${white}Open ${green}[Backup & Restore] ${white}Menu                           |
+|  ${yellow}4) ${white}Open ${green}[Customize] ${white}Menu                                  |
+|  ${yellow}5) ${white}Open ${green}[Informations] ${white}Menu                               |
+|  ${yellow}6) ${white}Open ${green}[System] ${white}Menu                                     |
+|                                                            |
+=============================================================
+|                                                            |
+|  ${yellow}r) ${white}Reload Moonraker and Nginx                             |
+|  ${yellow}u) ${white}Check Script Updates                                   |
+|  ${red}q) ${white}Exit                                                   |
+|                                                            |
+|                                                     ${cyan}$VERSION ${white}|
+=============================================================
+Please enter your choice and validate with Enter: ${yellow}
+EOM
+
     read -rp "" opt_main_menu
     opt_main_menu=$(echo "$opt_main_menu" | tr '[:lower:]' '[:upper:]')
     printf "${white}\n"
 }
+
 
 install_menu(){
     printf " ============================================================== \n"
