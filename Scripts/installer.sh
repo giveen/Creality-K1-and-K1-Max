@@ -204,54 +204,57 @@ EOM
 }
 
 
-install_menu(){
-    printf " ============================================================== \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " |         ${blue}Installation Helper for Creality K1 Series         ${white}| \n"
-    printf " |            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}| \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " [============================================================] \n"
-    printf " |                     ${yellow}[ Install Menu ]                       ${white}| \n"
-    printf " [============================================================] \n"
-    printf " |                                                            | \n"
-    printf " | ${blue}Essentials:                                                ${white}| \n"
-    printf " |   ${yellow}1) ${white}Install ${green}Moonraker ${white}and ${green}Nginx                           ${white}| \n"
-    printf " |   ${yellow}2) ${white}Install ${green}Fluidd ${white}(port 4408)                            | \n"
-    printf " |   ${yellow}3) ${white}Install ${green}Mainsail ${white}(port 4409)                          | \n"
-    printf " |                                                            | \n"
-    printf " | ${blue}Utilities:                                                 ${white}| \n"
-    printf " |   ${yellow}4) ${white}Install ${green}Entware                                       ${white}| \n"
-    printf " |   ${yellow}5) ${white}Install ${green}Klipper Gcode Shell Command ${white}file              | \n"
-    printf " |   ${yellow}6) ${white}Install ${green}Hostname Service ${white}file                         | \n"
-    printf " |   ${yellow}7) ${white}Install ${green}Fix for Reboot/Shutdown functions ${white}            | \n"
-    printf " |                                                            | \n"
-    printf " | ${blue}Improvements:                                              ${white}| \n"
-    printf " |   ${yellow}8) ${white}Install ${green}Klipper Adaptive Meshing & Purging            ${white}| \n"
-    printf " |   ${yellow}9) ${white}Install ${green}Buzzer Support ${white}files                          | \n"
-    printf " |  ${yellow}10) ${white}Install ${green}Nozzle Cleaning Fan Control ${white}files             | \n"
-    printf " |                                                            | \n"
-    printf " | ${blue}Camera:                                                    ${white}| \n"
-    printf " |  ${yellow}11) ${white}Install ${green}Moonraker Timelapse                           ${white}| \n"
-    printf " |  ${yellow}12) ${white}Install ${green}Camera Settings Control ${white}files                 | \n"
-    printf " |                                                            | \n"
-    printf " | ${blue}Remote Access and AI Detection:                            ${white}| \n"
-    printf " |  ${yellow}13) ${white}Install ${green}OctoEverywhere                                ${white}| \n"
-    printf " |  ${yellow}14) ${white}Install ${green}Obico                                         ${white}| \n"
-    printf " |  ${yellow}15) ${white}Install ${green}Mobileraker Companion                         ${white}| \n"
-    printf " |                                                            | \n"
-    printf " ============================================================== \n"
-    printf " |                                                            | \n"
-    printf " |  ${yellow}b) ${white}Back to ${yellow}[Main Menu]                                    ${white}| \n"
-    printf " |  ${red}q) ${white}Exit                                                   | \n"
-    printf " |                                                            | \n"
-    printf " |                                                     ${cyan}$VERSION ${white}| \n"
-    printf " ============================================================== \n"
-    printf "\n"
-    printf " ${white}Please enter your choice and validate with Enter: ${yellow}"
+install_menu() {
+    cat <<EOM
+=============================================================
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+|         ${blue}Installation Helper for Creality K1 Series         ${white}|
+|            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}|
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+[============================================================]
+|                     ${yellow}[ Install Menu ]                       ${white}|
+[============================================================]
+|                                                            |
+| ${blue}Essentials:                                                ${white}|
+|   ${yellow}1) ${white}Install ${green}Moonraker ${white}and ${green}Nginx                           ${white}|
+|   ${yellow}2) ${white}Install ${green}Fluidd ${white}(port 4408)                            |
+|   ${yellow}3) ${white}Install ${green}Mainsail ${white}(port 4409)                          |
+|                                                            |
+| ${blue}Utilities:                                                 ${white}|
+|   ${yellow}4) ${white}Install ${green}Entware                                       ${white}|
+|   ${yellow}5) ${white}Install ${green}Klipper Gcode Shell Command ${white}file              |
+|   ${yellow}6) ${white}Install ${green}Hostname Service ${white}file                         |
+|   ${yellow}7) ${white}Install ${green}Fix for Reboot/Shutdown functions ${white}            |
+|                                                            |
+| ${blue}Improvements:                                              ${white}|
+|   ${yellow}8) ${white}Install ${green}Klipper Adaptive Meshing & Purging            ${white}|
+|   ${yellow}9) ${white}Install ${green}Buzzer Support ${white}files                          |
+|  ${yellow}10) ${white}Install ${green}Nozzle Cleaning Fan Control ${white}files             |
+|                                                            |
+| ${blue}Camera:                                                    ${white}|
+|  ${yellow}11) ${white}Install ${green}Moonraker Timelapse                           ${white}|
+|  ${yellow}12) ${white}Install ${green}Camera Settings Control ${white}files                 |
+|                                                            |
+| ${blue}Remote Access and AI Detection:                            ${white}|
+|  ${yellow}13) ${white}Install ${green}OctoEverywhere                                ${white}|
+|  ${yellow}14) ${white}Install ${green}Obico                                         ${white}|
+|  ${yellow}15) ${white}Install ${green}Mobileraker Companion                         ${white}|
+|                                                            |
+=============================================================
+|                                                            |
+|  ${yellow}b) ${white}Back to ${yellow}[Main Menu]                                    ${white}|
+|  ${red}q) ${white}Exit                                                   |
+|                                                            |
+|                                                     ${cyan}$VERSION ${white}|
+=============================================================
+Please enter your choice and validate with Enter: ${yellow}
+EOM
+
     read -rp "" opt_install_menu
     opt_install_menu=$(echo "$opt_install_menu" | tr '[:lower:]' '[:upper:]')
     printf "${white}\n"
 }
+
 
 uninstall_menu(){
     printf " ============================================================== \n"
