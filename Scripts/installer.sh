@@ -306,33 +306,35 @@ EOM
     printf "${white}\n"
 }
 
+backup_menu() {
+    cat <<EOM
+=============================================================
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+|         ${blue}Installation Helper for Creality K1 Series         ${white}|
+|            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}|
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+[============================================================]
+|                ${yellow}[ Backup & Restore Menu ]                   ${white}|
+[============================================================]
+|                                                            |
+|  ${yellow}1) ${green}Backup ${white}configuration files                             |
+|  ${yellow}2) ${green}Restore ${white}configuration files                            |
+|                                                            |
+=============================================================
+|                                                            |
+|  ${yellow}b) ${white}Back to ${yellow}[Main Menu]                                    ${white}|
+|  ${red}q) ${white}Exit                                                   |
+|                                                            |
+|                                                     ${cyan}$VERSION ${white}|
+=============================================================
+Please enter your choice and validate with Enter: ${yellow}
+EOM
 
-backup_menu(){
-    printf " ============================================================== \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " |         ${blue}Installation Helper for Creality K1 Series         ${white}| \n"
-    printf " |            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}| \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " [============================================================] \n"
-    printf " |                ${yellow}[ Backup & Restore Menu ]                   ${white}| \n"
-    printf " [============================================================] \n"
-    printf " |                                                            | \n"
-    printf " |  ${yellow}1) ${green}Backup ${white}configuration files                             | \n"
-    printf " |  ${yellow}2) ${green}Restore ${white}configuration files                            | \n"
-    printf " |                                                            | \n"
-    printf " ============================================================== \n"
-    printf " |                                                            | \n"
-    printf " |  ${yellow}b) ${white}Back to ${yellow}[Main Menu]                                    ${white}| \n"
-    printf " |  ${red}q) ${white}Exit                                                   | \n"
-    printf " |                                                            | \n"
-    printf " |                                                     ${cyan}$VERSION ${white}| \n"
-    printf " ============================================================== \n"
-    printf "\n"
-    printf " ${white}Please enter your choice and validate with Enter: ${yellow}"
     read -rp "" opt_backup_menu
     opt_backup_menu=$(echo "$opt_backup_menu" | tr '[:lower:]' '[:upper:]')
     printf "${white}\n"
 }
+
 
 customize_menu(){
     printf " ============================================================== \n"
