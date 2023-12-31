@@ -119,12 +119,14 @@ check_folder() {
 
 check_file() {
     local file_path="$1"
+    
     if [ -f "$file_path" ]; then
-        printf "${green}Installed ${white}\n"
+        printf "${green}Installed${white}\n"
     else
-        printf "${darkred}Not Installed ${white}\n"
+        printf "${darkred}Not Installed${white}\n"
     fi
 }
+
 
 check_crealityweb() {
     local file_path="$1"
