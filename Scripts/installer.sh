@@ -59,50 +59,53 @@ crealityweb_file="/usr/bin/web-server"
 
 
 check_updates() {
-    github_script=$(wget --no-check-certificate -qO- https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/installer.sh)
+    github_script=$(wget --no-check-certificate -qO- "https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/installer.sh")
     current_script=$(cat /root/installer.sh)
+
     if [ "$github_script" != "$current_script" ]; then
-        current_version=$(echo "$github_script" | sed -n '3s/VERSION=//p')
+        current_version=$(awk -F '=' '/VERSION/ {print $2}' <<< "$github_script")
         printf " ${green}A new script version ($current_version) is available!\n\n"
         printf " ${white}See changelog here: ${yellow}https://tinyurl.com/w7d9k5bt\n\n"
         printf " ${white}Do you want to update? (${yellow}y${white}/${yellow}n${white}): ${yellow}"
-        read confirm
+        
+        read -r confirm
         printf "${white}\n"
-        while [ "$confirm" != "y" ] && [ "$confirm" != "Y" ] && [ "$confirm" != "n" ] && [ "$confirm" != "N" ]; do
-            printf "${darkred} Please select a correct choice!"
-            printf "${white}\n\n"
+
+        while ! [[ "$confirm" =~ ^[yYnN]$ ]]; do
+            printf "${darkred} Please select a correct choice!\n\n"
             printf " Do you want to update to the latest version? (${yellow}y${white}/${yellow}n${white}): ${yellow}"
-            read confirm
+            read -r confirm
             printf "${white}\n"
         done
+
         if [ "$confirm" = "y" -o "$confirm" = "Y" ]; then
             echo "$github_script" > /root/installer.sh
             printf " ${green}The script has been updated! ${white}Do you want to run the new version? (${yellow}y${white}/${yellow}n${white}): ${yellow}"
-            read run_confirm
+
+            read -r run_confirm
             printf "${white}\n"
-            while [ "$run_confirm" != "y" ] && [ "$run_confirm" != "Y" ] && [ "$run_confirm" != "n" ] && [ "$run_confirm" != "N" ]; do
-                printf "${darkred} Please select a correct choice!"
-                printf "${white}\n\n"
+
+            while ! [[ "$run_confirm" =~ ^[yYnN]$ ]]; do
+                printf "${darkred} Please select a correct choice!\n\n"
                 printf " Do you want to run the new version? (${yellow}y${white}/${yellow}n${white}): ${yellow}"
-                read run_confirm
+                read -r run_confirm
                 printf "${white}\n"
             done
+
             if [ "$run_confirm" = "y" -o "$run_confirm" = "Y" ]; then
                 exec sh /root/installer.sh
-            elif [ "$run_confirm" = "n" -o "$run_confirm" = "N" ]; then
-                printf " You can run it next time with this command: ${yellow}cd && sh ./installer.sh"
-                printf "${white}\n\n"
+            else
+                printf " You can run it next time with this command: ${yellow}cd && sh ./installer.sh\n\n"
                 exit
             fi
-        elif [ "$confirm" = "n" -o "$confirm" = "N" ]; then
-            printf "${darkred} Update canceled!"
-            printf "${white}\n\n"
+        else
+            printf "${darkred} Update canceled!\n\n"
         fi
     else
-        printf "${green} Your script is already up to date!"
-        printf "${white}\n\n"
+        printf "${green} Your script is already up to date!\n\n"
     fi
 }
+
 
 check_folder() {
     local folder_path="$1"
