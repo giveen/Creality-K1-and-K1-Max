@@ -369,58 +369,61 @@ EOM
 printf "${white}\n"
 }
 
-info_menu(){
-    printf " ============================================================== \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " |         ${blue}Installation Helper for Creality K1 Series         ${white}| \n"
-    printf " |            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}| \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " [============================================================] \n"
-    printf " |                  ${yellow}[ Informations Menu ]                     ${white}| \n"
-    printf " [============================================================] \n"
-    printf "\n"
-    printf "  ${blue}Essentials: ${white}\n"
-    printf "    ${white}Moonraker & Nginx → $(check_folder "$moonraker_folder")\n"
-    printf "    ${white}Fluidd → $(check_folder "$fluidd_folder")\n"
-    printf "    ${white}Mainsail → $(check_folder "$mainsail_folder")\n"
-    printf "\n"
-    printf "  ${blue}Utilities: ${white}\n"
-    printf "    ${white}Entware → $(check_folder "$entware_folder")\n"
-    printf "    ${white}Klipper Gcode Shell Command → $(check_file "$shellcommand_file")\n"
-    printf "    ${white}Hostname Service → $(check_file "$hostname_file")\n"
-    printf "    ${white}Fix for ${yellow}Reboot${white}/Shutdown functions → $(check_file "$systemctl_file")\n"
-    printf "\n"
-    printf "  ${blue}Improvements: ${white}\n"
-    printf "    ${white}Klipper Adaptive Meshing & Purging → $(check_folder "$kamp_folder")\n"
-    printf "    ${white}Buzzer Support → $(check_file "$buzzer_file")\n"
-    printf "    ${white}Nozzle Cleaning Fan Control → $(check_folder "$prtouch_folder")\n"
-    printf "\n"
-    printf "  ${blue}Camera: ${white}\n"
-    printf "    ${white}Moonraker Timelapse → $(check_file "$timelapse_file")\n"
-    printf "    ${white}Camera Settings Control → $(check_file "$camera_file")\n"
-    printf "\n"
-    printf "  ${blue}Remote Access and AI Detection: ${white}\n"
-    printf "    ${white}OctoEverywhere → $(check_folder "$octoeverywhere_folder")\n"
-    printf "    ${white}Obico → $(check_folder "$moonraker_obico_folder")\n"
-    printf "    ${white}Mobileraker Companion → $(check_folder "$mobileraker_folder")\n"
-    printf "\n"
-    printf "  ${blue}Customization: ${white}\n"
-    printf "    ${white}Custom Boot Display → $(check_file "$bootdisplay_file")\n"
-    printf "    ${white}Creality Web Interface → $(check_crealityweb "$crealityweb_file")\n"
-    printf "\n"
-    printf " ============================================================== \n"
-    printf " |                                                            | \n"
-    printf " |  ${yellow}b) ${white}Back to ${yellow}[Main Menu]                                    ${white}| \n"
-    printf " |  ${red}q) ${white}Exit                                                   | \n"
-    printf " |                                                            | \n"
-    printf " |                                                     ${cyan}$VERSION ${white}| \n"
-    printf " ============================================================== \n"
-    printf "\n"
-    printf " ${white}Please enter your choice and validate with Enter: ${yellow}"
+info_menu() {
+    cat <<EOM
+=============================================================
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+|         ${blue}Installation Helper for Creality K1 Series         ${white}|
+|            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}|
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+[============================================================]
+|                  ${yellow}[ Informations Menu ]                     ${white}|
+[============================================================]
+
+  ${blue}Essentials: ${white}
+    Moonraker & Nginx → $(check_folder "$moonraker_folder")
+    Fluidd → $(check_folder "$fluidd_folder")
+    Mainsail → $(check_folder "$mainsail_folder")
+
+  ${blue}Utilities: ${white}
+    Entware → $(check_folder "$entware_folder")
+    Klipper Gcode Shell Command → $(check_file "$shellcommand_file")
+    Hostname Service → $(check_file "$hostname_file")
+    Fix for ${yellow}Reboot${white}/Shutdown functions → $(check_file "$systemctl_file")
+
+  ${blue}Improvements: ${white}
+    Klipper Adaptive Meshing & Purging → $(check_folder "$kamp_folder")
+    Buzzer Support → $(check_file "$buzzer_file")
+    Nozzle Cleaning Fan Control → $(check_folder "$prtouch_folder")
+
+  ${blue}Camera: ${white}
+    Moonraker Timelapse → $(check_file "$timelapse_file")
+    Camera Settings Control → $(check_file "$camera_file")
+
+  ${blue}Remote Access and AI Detection: ${white}
+    OctoEverywhere → $(check_folder "$octoeverywhere_folder")
+    Obico → $(check_folder "$moonraker_obico_folder")
+    Mobileraker Companion → $(check_folder "$mobileraker_folder")
+
+  ${blue}Customization: ${white}
+    Custom Boot Display → $(check_file "$bootdisplay_file")
+    Creality Web Interface → $(check_crealityweb "$crealityweb_file")
+
+=============================================================
+|                                                            |
+|  ${yellow}b) ${white}Back to ${yellow}[Main Menu]                                    ${white}|
+|  ${red}q) ${white}Exit                                                   |
+|                                                            |
+|                                                     ${cyan}$VERSION ${white}|
+=============================================================
+Please enter your choice and validate with Enter: ${yellow}
+EOM
+
     read -rp "" opt_info_menu
     opt_info_menu=$(echo "$opt_info_menu" | tr '[:lower:]' '[:upper:]')
     printf "${white}\n"
 }
+
 
 system_menu(){
     memfree=`cat /proc/meminfo | grep MemFree | awk {'print $2'}`
