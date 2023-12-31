@@ -130,12 +130,14 @@ check_file() {
 
 check_crealityweb() {
     local file_path="$1"
+
     if [ -f "$file_path" ]; then
-        printf "${green}Present ${white}\n"
+        printf "${green}Present${white}\n"
     else
-        printf "${darkred}Removed ${white}\n"
+        printf "${darkred}Removed${white}\n"
     fi
 }
+
 
 check_ipaddress() {
     eth0_ip=$(ip -4 addr show eth0 | grep -o -E '(inet\s)([0-9]+\.){3}[0-9]+' | cut -d ' ' -f 2 | head -n 1)
