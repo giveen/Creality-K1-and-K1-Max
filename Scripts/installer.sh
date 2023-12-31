@@ -109,10 +109,11 @@ check_updates() {
 
 check_folder() {
     local folder_path="$1"
+    
     if [ -d "$folder_path" ]; then
-        printf "${green}Installed ${white}\n"
+        printf "${green}Installed${white}\n"
     else
-        printf "${darkred}Not Installed ${white}\n"
+        printf "${darkred}Not Installed${white}\n"
     fi
 }
 
