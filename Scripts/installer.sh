@@ -335,35 +335,38 @@ EOM
     printf "${white}\n"
 }
 
+customize_menu() {
+    cat <<EOM
+=============================================================
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+|         ${blue}Installation Helper for Creality K1 Series         ${white}|
+|            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}|
+|     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |
+[============================================================]
+|                    ${yellow}[ Customize Menu ]                      ${white}|
+[============================================================]
+|                                                            |
+|  ${yellow}1) ${white}Install ${green}Custom Boot Display                            ${white}|
+|  ${yellow}2) ${white}Remove ${green}Custom Boot Display                             ${white}|
+|                                                            |
+|  ${yellow}3) ${white}Remove ${green}Creality Web Interface                          ${white}|
+|  ${yellow}4) ${white}Restore ${green}Creality Web Interface                         ${white}|
+|                                                            |
+=============================================================
+|                                                            |
+|  ${yellow}b) ${white}Back to ${yellow}[Main Menu]                                    ${white}|
+|  ${red}q) ${white}Exit                                                   |
+|                                                            |
+|                                                     ${cyan}$VERSION ${white}|
+=============================================================
+Please enter your choice and validate with Enter: ${yellow}
+EOM
 
-customize_menu(){
-    printf " ============================================================== \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " |         ${blue}Installation Helper for Creality K1 Series         ${white}| \n"
-    printf " |            ${cyan}Copyright © Cyril Guislain (Guilouz)            ${white}| \n"
-    printf " |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     | \n"
-    printf " [============================================================] \n"
-    printf " |                    ${yellow}[ Customize Menu ]                      ${white}| \n"
-    printf " [============================================================] \n"
-    printf " |                                                            | \n"
-    printf " |  ${yellow}1) ${white}Install ${green}Custom Boot Display                            ${white}| \n"
-    printf " |  ${yellow}2) ${white}Remove ${green}Custom Boot Display                             ${white}| \n"
-    printf " |                                                            | \n"
-    printf " |  ${yellow}3) ${white}Remove ${green}Creality Web Interface                          ${white}| \n"
-    printf " |  ${yellow}4) ${white}Restore ${green}Creality Web Interface                         ${white}| \n"
-    printf " |                                                            | \n"
-    printf " ============================================================== \n"
-    printf " |                                                            | \n"
-    printf " |  ${yellow}b) ${white}Back to ${yellow}[Main Menu]                                    ${white}| \n"
-    printf " |  ${red}q) ${white}Exit                                                   | \n"
-    printf " |                                                            | \n"
-    printf " |                                                     ${cyan}$VERSION ${white}| \n"
-    printf " ============================================================== \n"
-    printf "\n"
-    printf " ${white}Please enter your choice and validate with Enter: ${yellow}"
     read -rp "" opt_customize_menu
     opt_customize_menu=$(echo "$opt_customize_menu" | tr '[:lower:]' '[:upper:]')
     printf "${white}\n"
+}
+printf "${white}\n"
 }
 
 info_menu(){
