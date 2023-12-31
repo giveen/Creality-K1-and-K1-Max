@@ -2,53 +2,61 @@
 
 VERSION=v3.9.1
 
-white=`echo "\033[m"`
-blue=`echo "\033[36m"`
-cyan=`echo "\033[1;36m"`
-yellow=`echo "\033[1;33m"`
-green=`echo "\033[01;32m"`
-red=`echo "\033[01;31m"`
-darkred=`echo "\033[31m"`
+# Text Formatting
+white='\033[m'
+blue='\033[36m'
+cyan='\033[1;36m'
+yellow='\033[1;33m'
+green='\033[01;32m'
+red='\033[01;31m'
+darkred='\033[31m'
+
+# Folder Paths
 moonraker_folder="/usr/data/moonraker/"
-moonraker_URL="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/moonraker/moonraker.tar"
-moonraker_config_URL="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/moonraker/moonraker.conf"
 nginx_folder="/usr/data/nginx/"
 fluidd_folder="/usr/data/fluidd/"
-fluidd_URL="https://github.com/fluidd-core/fluidd/releases/latest/download/fluidd.zip"
 mainsail_folder="/usr/data/mainsail/"
-mainsail_URL="https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip"
 moonraker_obico_folder="/usr/data/moonraker-obico/"
-moonraker_obico_URL="https://github.com/TheSpaghettiDetective/moonraker-obico.git"
 octoeverywhere_folder="/usr/data/octoeverywhere/"
-octoeverywhere_URL="https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git"
-timelapse_file="/usr/data/moonraker/moonraker/moonraker/components/timelapse.py"
-timelapse_URL1="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/timelapse/timelapse.py"
-timelapse_URL2="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/timelapse/timelapse.cfg"
 entware_folder="/usr/data/opt/"
 mobileraker_folder="/usr/data/mobileraker_companion/"
+kamp_folder="/usr/data/KAMP-for-K1-Series/"
+bootdisplay_folder="/etc/boot-display"
+
+# URLs
+moonraker_URL="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/moonraker/moonraker.tar"
+moonraker_config_URL="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/moonraker/moonraker.conf"
+fluidd_URL="https://github.com/fluidd-core/fluidd/releases/latest/download/fluidd.zip"
+mainsail_URL="https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip"
+moonraker_obico_URL="https://github.com/TheSpaghettiDetective/moonraker-obico.git"
+octoeverywhere_URL="https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git"
+timelapse_URL1="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/timelapse/timelapse.py"
+timelapse_URL2="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/timelapse/timelapse.cfg"
 mobileraker_URL1="https://github.com/Clon1998/mobileraker_companion"
 mobileraker_URL2="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/mobileraker/mobileraker-companion-k1-no-tzlocal.patch"
-kamp_folder="/usr/data/KAMP-for-K1-Series/"
 kamp_URL="https://github.com/Guilouz/KAMP-for-K1-Series.git"
-hostname_file="/etc/init.d/S01hostname"
 hostname_URL="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/services/S01hostname"
-systemctl_file="/usr/bin/systemctl"
 systemctl_URL="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/fixes/systemctl"
-shellcommand_file="/usr/share/klipper/klippy/extras/gcode_shell_command.py"
 shellcommand_URL="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/shell-command/gcode_shell_command.py"
-buzzer_file="/usr/data/beep.mp3"
 buzzer_URL="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/buzzer/beep.mp3"
-prtouch_folder="/usr/share/klipper/klippy/extras/prtouch_v2_fan"
 prtouch_URL1="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/nozzle-cleaning-fan-control/__init__.py"
 prtouch_URL2="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/nozzle-cleaning-fan-control/prtouch_v2_fan.pyc"
-camera_file="/usr/data/printer_data/config/camera-settings.cfg"
 camera_URL="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/camera/camera-settings.cfg"
-bootdisplay_folder="/etc/boot-display"
-bootdisplay_file="/etc/boot-display/part0/pic_100.jpg"
 bootdisplay_URL1="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/boot-display/k1_boot_display.tar"
 bootdisplay_URL2="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/boot-display/k1max_boot_display.tar"
 bootdisplay_URL3="https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/boot-display/stock_boot_display.tar"
+
+# File Paths
+timelapse_file="/usr/data/moonraker/moonraker/moonraker/components/timelapse.py"
+entware_file="/usr/data/opt/"
+shellcommand_file="/usr/share/klipper/klippy/extras/gcode_shell_command.py"
+systemctl_file="/usr/bin/systemctl"
+buzzer_file="/usr/data/beep.mp3"
+prtouch_folder="/usr/share/klipper/klippy/extras/prtouch_v2_fan"
+camera_file="/usr/data/printer_data/config/camera-settings.cfg"
+bootdisplay_file="/etc/boot-display/part0/pic_100.jpg"
 crealityweb_file="/usr/bin/web-server"
+
 
 check_updates() {
     github_script=$(wget --no-check-certificate -qO- https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/installer.sh)
